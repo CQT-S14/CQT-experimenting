@@ -66,7 +66,7 @@ def run_tomography(targets, device, nshots, root_path):
             force=True,
         ) as e:
             circuit = bell_circuit()
-            circuit, _ = custom_pipeline(circuit)
+            #circuit, _ = custom_pipeline(circuit)
             start_time = time.time()
             output = e.two_qubit_state_tomography(
                 circuit=circuit, targets=[(targets[0], targets[1])]

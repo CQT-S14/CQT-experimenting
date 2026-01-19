@@ -106,7 +106,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--qubits_list",
-        default="[[13, 14]]",
+        default="[[2, 3]]",
         type=str,
         help="Target qubit list as string representation",
     )

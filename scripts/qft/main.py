@@ -133,7 +133,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--qubits_list",
-        default="[[9,8],[8,13]]",
+        default="[[0,3],[2,3]]",
         type=str,
         help="Target edges list as string representation",
     )

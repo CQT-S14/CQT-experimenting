@@ -219,7 +219,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--qubits_list",
-        default="[[18, 14], [18, 19]]",
+        default="[[0, 3], [2, 3]]",
         type=str,
         help="Target qubits list as string representation",
     )

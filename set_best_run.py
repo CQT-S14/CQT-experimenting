@@ -1,4 +1,4 @@
-from clientdb.client import (
+from scripts.client import (
     set_server,
     calibrations_upload, calibrations_list, calibrations_download, calibrations_get_latest,
     results_upload, results_download,unzip_bytes_to_folder,test,results_list,set_best_run, get_best_run,
@@ -7,25 +7,25 @@ from clientdb.client import (
 
 set_server(server_url='http://54.169.91.191',api_token='EtadObqx4MRwCTLsTa_YWmTfUl24Jg57tngu_feXna4')
 
-# rsp = calibrations_upload(hashID="1e1f7e1d1af58009eda1986bb3689e6b9b2356b6", calibrations_folder="./data/calibrations")
-# print(rsp)
+rsp = calibrations_upload(hashID="4dc4082f38a53222b3956c22202d32a520d4bc78", calibrations_folder="./data/calibrations")
+print(rsp)
 
 # rsp = calibrations_upload(hashID="3826882f81128980b5e49b0e1bec76e24e40e158", calibrations_folder="./data/calibrations")
 # print(rsp)
 
 # rsp = results_upload(hashID="1e1f7e1d1af58009eda1986bb3689e6b9b2356b6", runID="20251123023814", data_folder="./data")
 # print(rsp)
-# rsp = results_upload(hashID="3826882f81128980b5e49b0e1bec76e24e40e158", runID="20251201101512", data_folder="./data")
+rsp = results_upload(hashID="4dc4082f38a53222b3956c22202d32a520d4bc78", runID="20260118161538", data_folder="./data")
+print(rsp)
+
+# rsp = get_best_run()
 # print(rsp)
 
-rsp = get_best_run()
-print(rsp)
+# rsp = set_best_run(calibrationHashID="3826882f81128980b5e49b0e1bec76e24e40e158",runID='20251201134523') 
+# print(rsp)
 
-rsp = set_best_run(calibrationHashID="3826882f81128980b5e49b0e1bec76e24e40e158",runID='20251201134523') 
-print(rsp)
-
-rsp = get_best_run()
-print(rsp)
+# rsp = get_best_run()
+# print(rsp)
 
 # Mark a few best runs over time
 # set_best_run("cal_hash_A", "run_001")

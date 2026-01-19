@@ -154,7 +154,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--qubits_list",
-        default="[[18, 14], [18, 19]]",
+        default="[[0, 3], [2, 3]]",
         type=str,
         help="Target qubits as string representation, last qubit used as ancilla",
     )

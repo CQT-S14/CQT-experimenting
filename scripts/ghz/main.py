@@ -143,7 +143,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--qubits_list", 
         type=ast.literal_eval, 
-        default=[[0, 1]],
+        default=[[0, 1], [0, 3], [2, 3], [3, 4]],
         help="List of coupled qubit pairs, e.g. '[[0,1],[0,2],[1,4],[1,5]]', from which we find the longest chain of qubits for GHZ circuit.",
     )
     parser.add_argument("--nshots", type=int, default=1000)
