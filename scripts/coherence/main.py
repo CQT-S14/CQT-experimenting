@@ -91,6 +91,8 @@ def main(device, **kwargs):
     # out_dir.mkdir(parents=True, exist_ok=True)
     # import pdb
     # pdb.set_trace()
+    root_path = root_path / "1"
+    root_path.mkdir(parents=True, exist_ok=True)
     try:
         with (root_path / "data.json").open("w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=4)

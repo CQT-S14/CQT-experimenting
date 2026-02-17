@@ -133,6 +133,8 @@ def main(device, nshots, qubits_list):
         return
 
     try:
+        out_dir = out_dir / f"{len(chain_of_qubits)}"
+        out_dir.mkdir(parents=True, exist_ok=True)
         with (out_dir / "results.json").open("w", encoding="utf-8") as f:
             json.dump(results, f, ensure_ascii=False, indent=4)
     except Exception as e:

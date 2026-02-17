@@ -140,20 +140,21 @@ def get_best_edges(hash_id, run_id):
         raise e
 
 
-def has_results(hash_id, run_id, experiment_name, logger=None):
+def has_results(hash_id, run_id, experiment_name, qubit_num, logger=None):
     """
     Check if results.json already exists for an experiment.
 
     Args:
         hash_id (str): Git commit hash
         run_id (str): Experiment run ID
+        qubit_num (str): number of qubits for the experiment
         experiment_name (str): Name of the experiment
         logger: Optional logger instance
 
     Returns:
         bool: True if results.json exists, False otherwise
     """
-    results_file = repo_root / "data" / hash_id / run_id / experiment_name / "results.json"
+    results_file = repo_root / "data" / hash_id / run_id / experiment_name / qubit_num / "results.json"
     exists = results_file.exists()
     if logger and exists:
         logger.info(f"Skipping {experiment_name}: results.json already exists at {results_file}")
@@ -419,7 +420,7 @@ def main():
     for experiment in experiment_groups.get("calibration", []):
         print("\n\n\n")
         # Check if results already exist
-        if has_results(hash_id, run_id, experiment, logger):
+        if has_results(hash_id, run_id, experiment, "calibration", logger):
             logger.info(f"Skipping {experiment}: results already exist")
             continue
         
@@ -443,7 +444,7 @@ def main():
     for experiment in experiment_groups.get("1", []):
         print("\n\n\n")
         # Check if results already exist
-        if has_results(hash_id, run_id, experiment, logger):
+        if has_results(hash_id, run_id, experiment, "1", logger):
             logger.info(f"Skipping {experiment}: results already exist")
             continue
         
@@ -466,7 +467,7 @@ def main():
 
             for experiment in experiment_groups[section_name]:
                 # Check if results already exist
-                if has_results(hash_id, run_id, experiment, logger):
+                if has_results(hash_id, run_id, experiment, section_name, logger):
                     logger.info(f"Skipping {experiment}: results already exist")
                     continue
                 

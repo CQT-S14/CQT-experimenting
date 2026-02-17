@@ -89,6 +89,7 @@ def main(device):
     }
 
     out_dir = config.output_dir_for(__file__, device)
+    out_dir = out_dir / "calibration"
     out_dir.mkdir(parents=True, exist_ok=True)
     with open(out_dir / "results.json", "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=4)

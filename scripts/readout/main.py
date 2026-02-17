@@ -70,6 +70,7 @@ def main(nqubits, device, nshots, **kwargs):
 
     # Write to data/<scriptname>/<device>/results.json
     out_dir = config.output_dir_for(__file__, device)
+    out_dir = out_dir / "1"
     out_dir.mkdir(parents=True, exist_ok=True)
     try:
         with (out_dir / "data.json").open("w", encoding="utf-8") as f:

@@ -107,6 +107,7 @@ def main(qubits_list, device, nshots):
     }
     
     out_dir = config.output_dir_for(__file__, device)
+    out_dir = out_dir / f"n_qubits"
     out_dir.mkdir(parents=True, exist_ok=True)
     output_path = os.path.join(out_dir, f"results.json")
 

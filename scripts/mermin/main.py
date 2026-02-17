@@ -142,7 +142,7 @@ def create_mermin_circuits_edges(qubit_edge_list: list[list[int]], readout_basis
     return circuits
 
 
-def main(nqubits, qubits_list, device, nshots):
+def main(qubits_list, device, nshots):
     results = dict()
     data = dict()
 
@@ -150,6 +150,7 @@ def main(nqubits, qubits_list, device, nshots):
     for edge in qubits_list:
         qubits |= set(edge)
     qubits = list(qubits)
+    nqubits = len(qubits)
 
     results["x"] = {}
     results["y"] = {}
@@ -202,6 +203,7 @@ def main(nqubits, qubits_list, device, nshots):
 
     # Write to data/<scriptname>/<device>/results.json
     out_dir = config.output_dir_for(__file__, device)
+    out_dir = out_dir / f"{nqubits}"
     out_dir.mkdir(parents=True, exist_ok=True)
     with open(out_dir / "results.json", "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=4)
@@ -211,12 +213,6 @@ def main(nqubits, qubits_list, device, nshots):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--nqubits",
-        default=3,
-        type=int,
-        help="Total number of qubits",
-    )
     parser.add_argument(
         "--qubits_list",
         default="[[0, 3], [2, 3]]",
@@ -247,4 +243,4 @@ if __name__ == "__main__":
         print(f"Error: Invalid qubit list format: {args.qubits_list}")
         sys.exit(1)
 
-    main(args.nqubits, qubits_list, args.device, args.nshots)
+    main(qubits_list, args.device, args.nshots)
